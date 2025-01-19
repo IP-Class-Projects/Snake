@@ -1,7 +1,7 @@
 export const GAME_CONFIG = {
     CANVAS_SIZE: 800,
     TILE_SIZE: 25,
-    INITIAL_SPEED: 150, // Reduced speed for faster movement
+    INITIAL_SPEED: 120, // Reduced speed for faster movement
     COLORS: {
         SNAKE_HEAD: '#50C878',
         SNAKE_HEAD_DARK: '#228B22',
