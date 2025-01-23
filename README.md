@@ -1,4 +1,4 @@
-# Netflix-Clone
+# Snake
 
 ## Group: 9
 
