@@ -14,7 +14,6 @@ export class SnakeGame {
         this.score = 0;
         this.highScore = localStorage.getItem('snakeHighScore') || 0;
         this.gameLoop = null;
-        this.isPaused = false;
         this.eatSound = new Audio('./assets/sound/eat.mp3');
 
         this.setupGame();
@@ -51,44 +50,11 @@ export class SnakeGame {
                 case 'ArrowRight':
                     if (this.direction !== 'left') this.nextDirection = 'right';
                     break;
-                case 'Escape':
-                    this.togglePause();
-                    break;
             }
         });
     }
 
-    togglePause() {
-        this.isPaused = !this.isPaused;
-    
-        if (this.isPaused) {
-            clearInterval(this.gameLoop);
-            this.drawPauseOverlay();
-        } else {
-            this.clearPauseOverlay();
-            this.gameLoop = setInterval(() => {
-                this.update();
-                this.draw();
-            }, this.gameSpeed);
-        }
-    }
-    clearPauseOverlay() {
-        this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
-        this.draw(); 
-    }
-
-    drawPauseOverlay() {
-        this.ctx.fillStyle = 'rgba(0, 0, 0, 0.5)';
-        this.ctx.fillRect(0, 0, this.canvas.width, this.canvas.height);
-        this.ctx.fillStyle = 'white';
-        this.ctx.font = '48px Arial';
-        this.ctx.textAlign = 'center';
-        this.ctx.fillText('PAUSED', this.canvas.width / 2, this.canvas.height / 2);
-    }
-
     update() {
-        if (this.isPaused) return;
-
         this.direction = this.nextDirection;
         const head = { ...this.snake.body[0] };
 
@@ -126,6 +92,7 @@ export class SnakeGame {
 
     draw() {
         this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+
         this.snake.draw(this.ctx);
         this.food.draw(this.ctx);
     }
@@ -142,7 +109,6 @@ export class SnakeGame {
 
     start() {
         this.setupGame();
-        this.isPaused = false;
         this.gameSpeed = GAME_CONFIG.INITIAL_SPEED;
         this.gameLoop = setInterval(() => {
             this.update();
