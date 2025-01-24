@@ -7,7 +7,7 @@ export class SnakeGame {
     constructor() {
         this.canvas = document.getElementById('gameCanvas');
         this.ctx = this.canvas.getContext('2d');
-        this.canvas.width = GAME_CONFIG.CANVAS_SIZE;
+        this.canvas.width = GAME_CONFIG.CANVAS_SIZE + 250;
         this.canvas.height = GAME_CONFIG.CANVAS_SIZE;
         this.direction = 'right';
         this.nextDirection = 'right';
@@ -109,9 +109,20 @@ export class SnakeGame {
 
     start() {
         this.setupGame();
+        this.gameSpeed = GAME_CONFIG.INITIAL_SPEED;
         this.gameLoop = setInterval(() => {
             this.update();
             this.draw();
-        }, GAME_CONFIG.INITIAL_SPEED);
+            
+            // Increase speed every 5 points
+            if (this.score > 0 && this.score % 5 === 0) {
+                clearInterval(this.gameLoop);
+                this.gameSpeed = Math.max(50, this.gameSpeed - 10); // Limit minimum speed
+                this.gameLoop = setInterval(() => {
+                    this.update();
+                    this.draw();
+                }, this.gameSpeed);
+            }
+        }, this.gameSpeed);
     }
 }

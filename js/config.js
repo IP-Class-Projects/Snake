@@ -1,5 +1,5 @@
 export const GAME_CONFIG = {
-    CANVAS_SIZE: 800,
+    CANVAS_SIZE: 650,
     TILE_SIZE: 25,
     INITIAL_SPEED: 120, // Reduced speed for faster movement
     COLORS: {

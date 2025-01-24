@@ -20,13 +20,13 @@ export function initializeUI() {
     });
 
     document.getElementById('quitGame').addEventListener('click', () => {
-        window.close();
+        const confirmQuit = confirm('Are you sure you want to quit the game?');
+        if (confirmQuit) {
+            window.close();
+        }
     });
 
     document.getElementById('backToMenu').addEventListener('click', () => {
-        if (game) {
-            game.stop();
-        }
         showMenu();
     });
 
