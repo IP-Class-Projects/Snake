@@ -71,6 +71,13 @@ button:hover {
     border-radius: 15px;
     backdrop-filter: blur(10px);
 }
+.instructions {
+    text-align: center;
+    margin-top: 10px;
+    font-size: 1rem;
+    color: #50C878;
+    text-shadow: 0 0 10px rgba(80, 200, 120, 0.3);
+}
 
 .game-header {
     display: flex;
