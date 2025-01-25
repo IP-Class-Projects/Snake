@@ -14,8 +14,9 @@ export function showGame() {
 
 export function initializeUI() {
     document.getElementById('newGame').addEventListener('click', () => {
+        const difficulty = document.getElementById('difficulty').value;
         showGame();
-        game = new SnakeGame();
+        game = new SnakeGame(difficulty);
         game.start();
     });
 

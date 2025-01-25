@@ -4,7 +4,7 @@ import { Food } from './food.js';
 import { showMenu } from './ui.js';
 
 export class SnakeGame {
-    constructor() {
+    constructor(difficulty) {
         this.canvas = document.getElementById('gameCanvas');
         this.ctx = this.canvas.getContext('2d');
         this.canvas.width = GAME_CONFIG.CANVAS_SIZE + 250;
@@ -16,8 +16,25 @@ export class SnakeGame {
         this.gameLoop = null;
         this.eatSound = new Audio('./assets/sound/eat.mp3');
 
+        this.setGameSpeed(difficulty);
         this.setupGame();
         this.setupEventListeners();
+    }
+
+    setGameSpeed(difficulty) {
+        switch (difficulty) {
+            case 'easy':
+                this.gameSpeed = 150;
+                break;
+            case 'medium':
+                this.gameSpeed = 100;
+                break;
+            case 'hard':
+                this.gameSpeed = 50;
+                break;
+            default:
+                this.gameSpeed = GAME_CONFIG.INITIAL_SPEED;
+        }
     }
 
     setupGame() {
@@ -109,7 +126,6 @@ export class SnakeGame {
 
     start() {
         this.setupGame();
-        this.gameSpeed = GAME_CONFIG.INITIAL_SPEED;
         this.gameLoop = setInterval(() => {
             this.update();
             this.draw();

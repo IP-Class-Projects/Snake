@@ -71,14 +71,32 @@ button:hover {
     border-radius: 15px;
     backdrop-filter: blur(10px);
 }
-.instructions {
-    text-align: center;
-    margin-top: 10px;
-    font-size: 1rem;
-    color: #50C878;
-    text-shadow: 0 0 10px rgba(80, 200, 120, 0.3);
+select {
+    background: #228B22;
+    border: none;
+    padding: 12px 24px;
+    margin: 10px;
+    border-radius: 25px;
+    color: #fff;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(34, 139, 34, 0.2);
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
 }
 
+select:hover {
+    transform: translateY(-2px);
+    background: #2E8B57;
+    box-shadow: 0 6px 20px rgba(34, 139, 34, 0.3);
+}
+
+select option {
+    background: #228B22;
+    color: #fff;
+}
 .game-header {
     display: flex;
     justify-content: space-between;
