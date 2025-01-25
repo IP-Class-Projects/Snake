@@ -15,6 +15,7 @@ export function showGame() {
 export function initializeUI() {
     document.getElementById('newGame').addEventListener('click', () => {
         const difficulty = document.getElementById('difficulty').value;
+        document.getElementById('difficultyLevel').textContent = difficulty.charAt(0).toUpperCase() + difficulty.slice(1);
         showGame();
         game = new SnakeGame(difficulty);
         game.start();

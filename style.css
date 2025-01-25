@@ -103,6 +103,12 @@ select option {
     align-items: center;
     margin-bottom: 20px;
 }
+.difficulty {
+    font-size: 1.5rem;
+    color: #50C878;
+    text-align: center;
+    flex-grow: 1;
+}
 
 .score {
     font-size: 1.5rem;
